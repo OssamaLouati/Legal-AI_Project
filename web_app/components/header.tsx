@@ -14,12 +14,14 @@ export default function Header() {
       <noscript>
         <style>{`.nojs-show { opacity: 1; top: 0; }`}</style>
       </noscript>
+      
       <div className={styles.signedInStatus}>
         <p
           className={`nojs-show ${
             !session && loading ? styles.loading : styles.loaded
           }`}
         >
+
           {!session && (
             <>
               <span className={styles.notSignedInText}>
@@ -37,6 +39,8 @@ export default function Header() {
               </a>
             </>
           )}
+
+
           {session?.user && (
             <>
               {session.user.image && (
