@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { signIn } from "next-auth/react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from '../assets/img/logo.svg';
 import navIcon1 from '../assets/img/nav-icon1.svg';
@@ -50,7 +51,7 @@ export const NavBar = () => {
                 <a href="#"><img src={navIcon3} alt="" /></a>
               </div> */}
               <Link href='#connect'>
-                <button className="vvd"><span>Get Started</span></button>
+                <button className="vvd" onClick={()=>{signIn()}}><span>Get Started</span></button>
               </Link>
             </span>
           </Navbar.Collapse>
