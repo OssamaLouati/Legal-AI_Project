@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavBar } from '../components/navbar'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Banner } from '../components/banner'
