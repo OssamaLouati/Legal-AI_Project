@@ -58,26 +58,23 @@ export const Banner = () => {
                     isVisible ? "animate__animated animate__fadeIn" : ""
                   }
                 >
-                  <span className="tagline">Welcome to my Portfolio</span>
+                  <span className="tagline">Welcome to Legal AI</span>
                   <h1>
-                    {`Hi! I'm Judy`}{" "}
+                    Discover the power of innovation with AI.
+                    {/* {`Hi! I'm Judy`}{" "}
                     <span
                       className="txt-rotate"
                      // dataPeriod="1000"
                       data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'
                     >
                       <span className="wrap">{text}</span>
-                    </span>
+                    </span> */}
                   </h1>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to make a
-                    type specimen book.
+                  Traditionally, analyzing legal documents is time-consuming and expensive. Our platform automates the process by applying machine learning algorithms to identify relevant information and viewpoints, such as clauses, terms, and patterns. This significantly improves the speed and accuracy of legal research, identifies potential risks and opportunities, and enhances compliance. Legal analysis becomes quicker, easier, and more reliable.
                   </p>
                   <button onClick={() => console.log("connect")}>
-                    Let’s Connect <ArrowRightCircle size={25} />
+                    Get Started for free <ArrowRightCircle size={25} />
                   </button>
                 </div>
               )}
@@ -92,7 +89,7 @@ export const Banner = () => {
                   }
                 >
                   <img
-                    src="https://img.freepik.com/free-photo/space-background-realistic-starry-night-cosmos-shining-stars-milky-way-stardust-color-galaxy_1258-154643.jpg"
+                    src="https://i.postimg.cc/X7PNPjKp/Untitled-design-2.png"
                     alt="Header Img"
                   />
                 </div>
