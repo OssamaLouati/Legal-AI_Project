@@ -13,47 +13,6 @@ interface FormDetails {
 }
 
 export const Contact = () => {
-  // const formInitialDetails: FormDetails = {
-  //   firstName: '',
-  //   lastName: '',
-  //   email: '',
-  //   phone: '',
-  //   message: ''
-  // };
-  // const [formDetails, setFormDetails] = useState<FormDetails>(formInitialDetails);
-  // const [buttonText, setButtonText] = useState('Send');
-  // const [status, setStatus] = useState<{ success?: boolean; message?: string }>({});
-
-  // const onFormUpdate = (category: keyof FormDetails, value: string) => {
-  //   setFormDetails({
-  //     ...formDetails,
-  //     [category]: value
-  //   });
-  // };
-
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setButtonText("Sending...");
-  //   let response = await fetch("http://localhost:5000/contact", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json;charset=utf-8",
-  //     },
-  //     body: JSON.stringify(formDetails),
-  //   });
-  //   setButtonText("Send");
-  //   let result = await response.json();
-  //   setFormDetails(formInitialDetails);
-  //   if (result.code === 200) {
-  //     setStatus({ success: true, message: 'Message sent successfully' });
-  //   } else {
-  //     setStatus({ success: false, message: 'Something went wrong, please try again later.' });
-  //   }
-  // };
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
   const formInitialDetails: FormDetails = {
     firstName: '',
     lastName: '',
