@@ -361,10 +361,19 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin: 0 auto;
   position: relative;
 }
+.item{
+  margin: 0px 40px 0px 0px;
+}
 .skill-slider .item img {
   width: 50%;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 25px auto;
 }
+@media screen and (max-width: 767px) {
+  .skill-slider .item h5{
+    font-size: 12 px;
+  }
+}
+
 .background-image-left {
   top: 28%;
   position: absolute;
