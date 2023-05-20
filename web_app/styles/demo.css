@@ -459,7 +459,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .proj-imgbx {
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
   margin-bottom: 24px;
+  
 }
 .proj-imgbx img {
   width: 100%;
@@ -494,7 +496,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   opacity: 1;
 }
 .proj-txtx h4 {
-  font-size: 30px;
+  text-transform: uppercase;
+  font-size: 27px;
   font-weight: 700;
   letter-spacing: 0.8px;
   line-height: 1.1em;

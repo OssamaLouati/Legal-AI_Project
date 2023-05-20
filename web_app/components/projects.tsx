@@ -11,18 +11,18 @@ export const Projects = () => {
 
   const projects = [
     {
-      title: "Business Startup",
-      description: "Design & Development",
+      title: "Khouloud Taouchikht",
+      description: "Software Engineer",
       imgUrl: "https://i.postimg.cc/qqwFdbJv/Screenshot-2023-04-23-172918.png",
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
+      title: "OUSSAMA LOUATI",
+      description: "Software Engineer",
       imgUrl: "https://i.postimg.cc/xCRJGMjz/OUSSAMA-LOUATI.jpg",
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
+      title: "Houda el ibrahimi",
+      description: "Software Engineer",
       imgUrl: "https://i.postimg.cc/zvhmZSLL/justme-1.jpg",
     },
   ];
@@ -64,8 +64,8 @@ export const Projects = () => {
                         }
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="second">
-                      {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p> */}
+                    {/* <Tab.Pane eventKey="second">
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
                       <div className="proj-imgbx">
                         <img src="https://i.postimg.cc/MKLWyhdb/IMG-20230422-075421.jpg" alt="Project Image" />
                         <div className="proj-txtx">
@@ -76,7 +76,7 @@ export const Projects = () => {
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
-                    </Tab.Pane>
+                    </Tab.Pane> */}
                   </Tab.Content>
                 </Tab.Container>
               </div>}
