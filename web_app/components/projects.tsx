@@ -13,32 +13,17 @@ export const Projects = () => {
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg1,
+      imgUrl: "https://i.postimg.cc/qqwFdbJv/Screenshot-2023-04-23-172918.png",
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg2,
+      imgUrl: "https://i.postimg.cc/xCRJGMjz/OUSSAMA-LOUATI.jpg",
     },
     {
       title: "Business Startup",
       description: "Design & Development",
-      imgUrl: projImg3,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
+      imgUrl: "https://i.postimg.cc/zvhmZSLL/justme-1.jpg",
     },
   ];
 
@@ -53,7 +38,7 @@ export const Projects = () => {
                 <h2>Who we are ?</h2>
                 <p>Our projects have been brought to life with the assistance of a diverse group of skilled INPT students. These talented individuals have contributed their expertise, passion, and dedication to crafting innovative solutions that meet the needs of our clients and users.</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                  <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
+                  {/* <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
                       <Nav.Link eventKey="first">Tab 1</Nav.Link>
                     </Nav.Item>
@@ -63,7 +48,7 @@ export const Projects = () => {
                     <Nav.Item>
                       <Nav.Link eventKey="third">Tab 3</Nav.Link>
                     </Nav.Item>
-                  </Nav>
+                  </Nav> */}
                   <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
                     <Tab.Pane eventKey="first">
                       <Row>
@@ -80,7 +65,14 @@ export const Projects = () => {
                       </Row>
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                      {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p> */}
+                      <div className="proj-imgbx">
+                        <img src="https://i.postimg.cc/MKLWyhdb/IMG-20230422-075421.jpg" alt="Project Image" />
+                        <div className="proj-txtx">
+                          <h4>Oussama Louati</h4>
+                          <span>software Engineer</span>
+                        </div>
+                      </div>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
