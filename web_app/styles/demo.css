@@ -379,7 +379,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   position: absolute;
   bottom: 0;
   width: 40%;
-  z-index: -4;
+  opacity: 0.5;
+  z-index: 9;
 }
 
 /************ Projects Css ************/
