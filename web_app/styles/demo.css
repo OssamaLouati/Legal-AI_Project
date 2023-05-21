@@ -34,17 +34,17 @@ iframe {
 /************ Custom Font ************/
 @font-face {
 	font-family: Centra;
-	src: url('../assets/font/CentraNo2-Bold.ttf');
+	src: url('/assets/font/CentraNo2-Bold.ttf');
 	font-weight: 700;
 }
 @font-face {
 	font-family: Centra;
-	src: url('../assets/font/CentraNo2-Medium.ttf');
+	src: url('/assets/font/CentraNo2-Medium.ttf');
 	font-weight: 500;
 }
 @font-face {
 	font-family: Centra;
-	src: url('../assets/font/CentraNo2-Book.ttf');
+	src: url('/assets/font/CentraNo2-Book.ttf');
 	font-weight: 400;
 }
 
@@ -108,7 +108,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 p.success {
-	color: green;
+	color: rgb(255, 255, 255);
 }
 
 p.danger {
@@ -267,7 +267,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner {
   margin-top: 0;
   padding: 230px 0 100px 0;
-  background-image: url('../assets/img/banner-bg.png');
+  background-image: url('/assets/img/banner-bg.png');
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -592,7 +592,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /************ Footer Css ************/
 .footer {
   padding: 0 0 50px 0;
-  background-image: url('../assets/img/footer-bg.png');
+  background-image: url('/assets/img/footer-bg.png');
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
