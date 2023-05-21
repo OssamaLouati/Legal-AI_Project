@@ -183,6 +183,28 @@ span.navbar-text {
 .social-icon a:hover img {
     filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
 }
+.avatar-navbar{
+  border-radius: 2rem;
+  float: left;
+  height: 2.8rem;
+  width: 2.8rem;
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.avatar-navbar:hover{
+  transition: all 0.5s ease;
+  box-shadow: 5px 10px 10px -5px rgba(250, 125, 227, 0.25), 17px 16px 16px -8px rgba(213, 228, 72, 0.3);
+}
+.sign-out{
+  font-weight: 400;
+  color: #fff !important;
+  letter-spacing: 0.8px;
+  padding: 0 25px;
+  font-size: 18px;
+  opacity: 0.75;
+
+}
 .navbar-text button {
   font-weight: 700;
   color: #fff;
