@@ -1,13 +1,23 @@
-import Layout from "../components/layout"
+import { NavBar } from '../components/navbar'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Banner } from '../components/banner'
+import { Skills } from '../components/skills'
+import { Projects } from '../components/projects'
+import { Contact } from '../components/contact'
+import { Foooter } from '../components/foooter'
 
-export default function IndexPage() {
+export default function demo() {
   return (
-    <Layout>
-      <h1>NextAuth.js Example</h1>
-      <p>
-        This is an example site to demonstrate how to use{" "}
-        <a href="https://next-auth.js.org">NextAuth.js</a> for authentication.
-      </p>
-    </Layout>
+    <div className="App">
+       <NavBar />
+       <Banner />
+       <Skills />
+       <Projects />
+       <Contact />
+       <Foooter />
+    </div>
+    
   )
 }
+
+
