@@ -90,6 +90,9 @@ img {
   width: 100%;
   height: auto;
 }
+.logo-css{
+  width: 250px;
+}
 
 button {
   border: 0;
