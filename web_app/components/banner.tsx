@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
+import { ArrowRightCircle, Link } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -73,9 +73,11 @@ export const Banner = () => {
                   <p>
                   Traditionally, analyzing legal documents is time-consuming and expensive. Our platform automates the process by applying machine learning algorithms to identify relevant information and viewpoints, such as clauses, terms, and patterns. This significantly improves the speed and accuracy of legal research, identifies potential risks and opportunities, and enhances compliance. Legal analysis becomes quicker, easier, and more reliable.
                   </p>
-                  <button onClick={() => console.log("connect")}>
-                    Get Started for free <ArrowRightCircle size={25} />
-                  </button>
+                  <a href="/dashboard">
+                    <button >
+                      Get Started for free <ArrowRightCircle size={25} />
+                    </button>
+                  </a>
                 </div>
               )}
             </TrackVisibility>
