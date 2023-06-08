@@ -1,0 +1,40 @@
+{
+    "0": [
+        {
+            "text": "For the first Lease Year of 2012-2013 in the Initial Lease Term Tenant shall pay base rent in the annual sum of $134,991.96 as adjusted for 2012 by the CPI formula set forth above, payable in twelve equal monthly amounts.",
+            "probability": 0.7873191721778133,
+            "start_logit": 5.299302101135254,
+            "end_logit": 5.543299674987793
+        },
+        {
+            "text": "For the first Lease Year of 2012-2013 in the Initial Lease Term Tenant shall pay base rent in the annual sum of $134,991.96 as adjusted for 2012 by the CPI formula set forth above, payable in twelve equal monthly amounts. Base Rent shall adjust annually for all Lease Years during the Initial Lease Term pursuant to the CPI formula set forth above.",
+            "probability": 0.14602015258118597,
+            "start_logit": 5.299302101135254,
+            "end_logit": 3.858410596847534
+        },
+        {
+            "text": "\u201cLandlord,\u201d and MSU Extension, Housing & Environmental Health Program,",
+            "probability": 0.02271688879635264,
+            "start_logit": 4.193456172943115,
+            "end_logit": 3.1036205291748047
+        },
+        {
+            "text": "Landlord",
+            "probability": 0.02057666252366235,
+            "start_logit": 4.193456172943115,
+            "end_logit": 3.004669427871704
+        },
+        {
+            "text": "\u201cLandlord,\u201d and MSU Extension, Housing & Environmental Health Program, a division of Montana State University, a state institution of higher education, hereinafter referred to as \u201cTenant.\u201d",
+            "probability": 0.018483751964364886,
+            "start_logit": 4.193456172943115,
+            "end_logit": 2.8974039554595947
+        },
+        {
+            "text": "",
+            "probability": 0.0048833719566208095,
+            "start_logit": 2.972933769226074,
+            "end_logit": 2.786870241165161
+        }
+    ]
+}

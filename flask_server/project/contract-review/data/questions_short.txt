@@ -1,0 +1,41 @@
+Question 1: What is the contract name?
+Question 2: Who are the parties that signed the contract?
+Question 3: What is the agreement date of the contract?
+Question 4: What is the date when the contract is effective?
+Question 5: What date will the contract's initial term expire?
+Question 6: What is the renewal term after the initial term expires?
+Question 7: What is the notice period required to terminate renewal?
+Question 8: Which state/country's law governs the interpretation of the contract?
+Question 9: What happens if a third party gets better terms in the contract?
+Question 10: What is the restriction on the ability of a party to compete with the counterparty?
+Question 11: Is there an exclusive dealing commitment with the counterparty?
+Question 12: Is a party restricted from contracting or soliciting customers?
+Question 13: What are the competitive restriction exceptions in the contract?
+Question 14: Is there a restriction on a party’s soliciting or hiring employees?
+Question 15: Is there a requirement on a party not to disparage the counterparty?
+Question 16: Can a party terminate this contract without cause?
+Question 17: What are the terms granting for right of first refusal, first offer, or negotiation?
+Question 18: What are the terms about right of termination?
+Question 19: Is consent or notice required of a party if the contract is assigned to a third party?
+Question 20: What are the terms for revenue and profit sharing?
+Question 21: What are the restrictions to raise or reduce prices of technology, goods, or services provided?
+Question 22: Is there a minimum order size or minimum amount or units per-time period?
+Question 23: What are the volume restrictions if one party’s use of the product/services exceeds certain threshold?
+Question 24: What are the terms about intellectual property created by one party?
+Question 25: What terms are related to joint IP ownership?
+Question 26: Does the contract contain a license granted by one party to its counterparty?
+Question 27: Does the contract limit the ability of a party to transfer the license being granted to a third party?
+Question 28: Does the contract contain a license grant by affiliates of the licensor?
+Question 29: Does the contract contain a license grant to a licensee?
+Question 30: Is there a clause granting one party an “enterprise,” “all you can eat” or unlimited usage license?
+Question 31: Does the contract contain a license grant that is irrevocable or perpetual?
+Question 32: Is one party required to deposit its source code into escrow with a third party?
+Question 33: Is a party subject to obligations after the termination or expiration of a contract?
+Question 34: Does a party have the right to audit the books, records, or physical locations of the counterparty?
+Question 35: Is a party’s liability uncapped upon the breach of its obligation in the contract?
+Question 36: Does the contract include a cap on liability upon the breach of a party’s obligation?
+Question 37: What clauses would either award either party liquidated damages for breach?
+Question 38: What is the duration of any warranty against defects or errors in technology, products, or services?
+Question 39: What are the requirements for insurance that must be maintained?
+Question 40: What sections describe the covenant not to sue?
+Question 41: What clauses relate to third-party beneficiaries?
