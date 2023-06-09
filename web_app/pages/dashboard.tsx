@@ -41,10 +41,10 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-    {/* <div className="nav navbar">
+   {/*  <div className="nav navbar">
 
     <NavBar ></NavBar>
-    </div> */}
+    </div>  */}
     <div className="container">
        <div className="upload-section">
             <label htmlFor="images" className="drop-container">
@@ -52,7 +52,18 @@ const Dashboard: React.FC = () => {
             or
             <input type="file" id="images"  required  onChange={handleFileUpload} />
             </label>
+            <div className="controls-section">
             
+                <select className="select-box" value={selectedQuestion} onChange={handleQuestionSelect}>
+                <option value="">Select a question</option>
+                <option value="Question 1">Question 1</option>
+                <option value="Question 2">Question 2</option>
+                <option value="Question 3">Question 3</option>
+                </select>
+                <button onClick={handleButtonClick} className="custom-btn btn-8"><span>Generate Response</span></button>
+        
+       
+            </div>
             
             <div className="code-container">
                 <div className="glow-container">
@@ -60,9 +71,9 @@ const Dashboard: React.FC = () => {
                 </div>
                 <section className="augs bg" data-augmented-ui>
                     
-                    <input className="title" value="Contract"/>
+                    <input className="title" value="Get Response"/>
                     <div className="code highcontrast-dark">
-                    <textarea className="code-textarea" rows={10}  value={fileText} placeholder="Type message...">
+                    <textarea className="code-textarea" rows={10}  value={fileText} placeholder="Generate Response...">
 
                     </textarea>
                     </div>
@@ -70,18 +81,7 @@ const Dashboard: React.FC = () => {
             </div>
 
         </div>
-      <div className="controls-section">
-        <select className="select-box" value={selectedQuestion} onChange={handleQuestionSelect}>
-          <option value="">Select a question</option>
-          <option value="Question 1">Question 1</option>
-          <option value="Question 2">Question 2</option>
-          <option value="Question 3">Question 3</option>
-        </select>
-        
-        
-        <button onClick={handleButtonClick}>Generate Response</button>
-        <textarea className="response-textarea" rows={10} value={response}  />
-      </div>
+      
       <div>
       </div>
     </div>
