@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import Layout from "../components/layout";
 import AccessDenied from "../components/access-denied";
 import React from 'react';
+import { NavBar } from "../components/navbar";
 //import '../styles/demo.css';
 
 const Dashboard: React.FC = () => {
@@ -36,14 +37,39 @@ const Dashboard: React.FC = () => {
         <>{status}</>
     )
    }
+   
 
   return (
-    
+    <>
+    {/* <div className="nav navbar">
+
+    <NavBar ></NavBar>
+    </div> */}
     <div className="container">
-      <div className="upload-section">
-        <input className="file-input" type="file" onChange={handleFileUpload} />
-        <textarea className="textarea" rows={10} value={fileText} readOnly />
-      </div>
+       <div className="upload-section">
+            <label htmlFor="images" className="drop-container">
+            <span className="drop-title">Drop files here</span>
+            or
+            <input type="file" id="images"  required  onChange={handleFileUpload} />
+            </label>
+            
+            
+            <div className="code-container">
+                <div className="glow-container">
+                    <div className="augs" data-augmented-ui></div>
+                </div>
+                <section className="augs bg" data-augmented-ui>
+                    
+                    <input className="title" value="Contract"/>
+                    <div className="code highcontrast-dark">
+                    <textarea className="code-textarea" rows={10}  value={fileText} placeholder="Type message...">
+
+                    </textarea>
+                    </div>
+                </section>
+            </div>
+
+        </div>
       <div className="controls-section">
         <select className="select-box" value={selectedQuestion} onChange={handleQuestionSelect}>
           <option value="">Select a question</option>
@@ -51,12 +77,15 @@ const Dashboard: React.FC = () => {
           <option value="Question 2">Question 2</option>
           <option value="Question 3">Question 3</option>
         </select>
+        
+        
         <button onClick={handleButtonClick}>Generate Response</button>
+        <textarea className="response-textarea" rows={10} value={response}  />
       </div>
       <div>
-        <textarea className="response-textarea" rows={10} value={response} readOnly />
       </div>
     </div>
+    </>
   
   );
 };
