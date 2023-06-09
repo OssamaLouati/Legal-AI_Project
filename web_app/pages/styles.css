@@ -1,10 +1,57 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
+ 
+
+.titre ,.first-word ,.complete-phrase {
+    display:inline-block;
+    
+    overflow:hidden;
+    white-space:nowrap;
+    margin: 20px;
+    font-size: 35px;
   }
   
+  .first-word {    /* For increasing performance 
+                         ID/Class should've been used. 
+                         For a small demo 
+                         it's okaish for now */
+    animation: showup 7s infinite;
+  }
+  
+  .complete-phrase {
+    width:100%;
+    animation: reveal 7s infinite;
+  }
+  
+  .complete-phrase span {
+    animation: slidein 7s infinite;
+  }
+  
+  @keyframes showup {
+      0% {opacity:0;}
+      20% {opacity:1;}
+      80% {opacity:1;}
+      100% {opacity:0;}
+  }
+  
+  @keyframes slidein {
+      0% { margin-left:-800px; }
+      20% { margin-left:-800px; }
+      35% { margin-left:0px; }
+      100% { margin-left:0px; }
+  }
+  
+  @keyframes reveal {
+      0% {opacity:0;width:0px;}
+      20% {opacity:1;width:0px;}
+      30% {width:155px;}
+      80% {opacity:1;}
+      100% {opacity:0;width:755px;}
+  }
+  
+  
+  
+
+
   .upload-section {
     display: flex;
     flex-direction: column;
@@ -12,16 +59,7 @@
     margin-right: 2rem;
   }
   
-  .file-input {
-    margin-bottom: 1rem;
-  }
   
-  .textarea {
-    width: 300px;
-    height: 200px;
-    resize: none;
-    margin-bottom: 1rem;
-  }
   
   .controls-section {
     display: flex;
@@ -52,7 +90,7 @@
 
   .btn-8 {
     background-color: #f0ecfc;
-  background-image: linear-gradient(315deg, #f0ecfc 0%, #c797eb 74%);
+  background-image: linear-gradient(315deg, #6948cc 0%, #c797eb 74%);
     line-height: 42px;
     padding: 0;
     border: none;
@@ -125,6 +163,41 @@
   }
     
   
+/* 9 */
+.btn-9 {
+    border: none;
+    width: 200px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  .btn-9:after {
+    position: absolute;
+    content: " ";
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     background-color: #1fd1f9;
+  background-image: linear-gradient(315deg, #421858 0%, #b621fe 74%);
+    transition: all 0.3s ease;
+  }
+  .btn-9:hover {
+    background: transparent;
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+    color: #fff;
+  }
+  .btn-9:hover:after {
+    -webkit-transform: scale(2) rotate(180deg);
+    transform: scale(2) rotate(180deg);
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+      inset -4px -4px 6px 0 rgba(255,255,255,.5),
+      inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+  }
 
   
   .select-box {
@@ -169,7 +242,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 350px;
     height: 200px;
     padding: 20px;
     border-radius: 10px;
@@ -196,17 +268,9 @@
     transition: color .2s ease-in-out;
   }
   
-  input[type=file] {
-    width: 350px;
-    max-width: 100%;
-    color: #444;
-    padding: 5px;
-    background: #fff;
-    border-radius: 10px;
-    border: 1px solid #555;
-  }
   
-  input[type=file]::file-selector-button {
+  
+  .file-upload::file-selector-button {
     margin-right: 20px;
     border: none;
     background: rebeccapurple;
@@ -217,7 +281,7 @@
     transition: background .2s ease-in-out;
   }
   
-  input[type=file]::file-selector-button:hover {
+  .file-upload::file-selector-button:hover {
     background: #9d0da5;
   }
 
@@ -243,7 +307,7 @@
     width: 265px;
   }
   
-  textarea:focus:-webkit-placeholder{
+  code-textarea:focus:-webkit-placeholder{
     color: transparent;
   }
   
@@ -371,7 +435,7 @@
     border: none;
   } */
   
-  input.title {
+  .title {
     position: absolute;
     top: 17px;
     left: 120px;

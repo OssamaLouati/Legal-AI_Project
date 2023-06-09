@@ -61,16 +61,22 @@ const FileUpload: React.FC = () => {
   };
 
   return (
-    <>
+    < >
     
+        <div className='titre'>
+            <div className='first-word'>Contract Q&A:</div> 
+            <div className='complete-phrase'> 
+            <span>Unlocking Answers to Vital Questions</span>
+            </div>
+        </div>
     <div className='dashboard'>
-      <h1>File Upload</h1>
+
       <form onSubmit={handleFormSubmit} encType="multipart/form-data">
         {/* <input type="file" name="file" /> */}
         <label htmlFor="images" className="drop-container">
             <span className="drop-title">Drop files here</span>
             or
-            <input type="file"   name="file"  required />
+            <input type="file" className='file-upload'   name="file"  required />
             </label>
         <select name="question" className="select-box" >
           {/* <option value="What is the contract name?">
@@ -106,8 +112,9 @@ const FileUpload: React.FC = () => {
                     
                 </section>
         </div>
-      <button onClick={handleExplanationClick}>Explain</button>
-      <div id="explanation"></div>
+      <button className="custom-btn btn-9" onClick={handleExplanationClick}><span>Explain response</span></button>
+      
+      <div className="ccode highcontrast-dark" id="explanation"></div>
     </div>
     </>
   );
