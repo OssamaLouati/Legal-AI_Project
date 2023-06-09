@@ -154,7 +154,13 @@
   
   
   
-  
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
   
 .drop-container {
     position: relative;
@@ -163,6 +169,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 350px;
     height: 200px;
     padding: 20px;
     border-radius: 10px;

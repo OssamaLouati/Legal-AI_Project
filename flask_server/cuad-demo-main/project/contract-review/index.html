@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    var selectedResponse = "";  // Variable to store the selected response
+
+    $("form").on("submit", function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        $.ajax({
+            url: "http://127.0.0.1:5000/contracts",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                var responses = response.split("\n");
+                selectedResponse = responses[0];  // Select the first response
+                console.log(selectedResponse);
+                var htmlContent = "";
+                responses.forEach(function(res, index) {
+                    var responseNumber = index + 1;
+                    htmlContent += "<p>Answer " + responseNumber + ": " + res + "</p>";
+                });
+                $("#response").html(htmlContent);
+                $("#explanation").html("");
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+
+    $("#explain-btn").on("click", function() {
+        if (selectedResponse !== "") {
+            var encodedSelectedResponse = encodeURIComponent(selectedResponse);
+            var apiUrl = "http://127.0.0.1:5000/contracts/paraphrase/" + encodedSelectedResponse;
+            $.ajax({
+                url: apiUrl,
+                type: "GET",
+                success: function(response) {
+                    var responses = response;
+                
+                   
+                    var htmlContent = "";
+                    for (var i = 0; i < responses.length; i++) {
+                        var element = responses[i];
+                        htmlContent += "<p>" + element + "</p>";
+                    }
+                    console.log(htmlContent);
+                
+               
+                    $("#explanation").html(htmlContent);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    });
+});
+
+    </script>
+    
+</head>
+<body>
+    <h1>File Upload</h1>
+    <form action="http://127.0.0.1:5000/contracts" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <select name="question">
+            <option value="What is the contract name?">What is the contract name?</option>
+            <option value="Who are the parties that signed the contract?">Who are the parties that signed the contract?</option>
+            <option value="What is the agreement date of the contract?">What is the agreement date of the contract?</option>
+        </select>
+        <input type="submit" value="Upload">
+    </form>
+    <div id="response"></div>
+    <button id="explain-btn">Explain</button>
+    <div id="explanation"></div>
+</body>
+</html>
