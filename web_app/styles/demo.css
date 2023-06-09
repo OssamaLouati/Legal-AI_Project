@@ -693,3 +693,43 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-top: 20px;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.file-input {
+  margin-bottom: 1rem;
+}
+
+.textarea {
+  width: 300px;
+  height: 200px;
+  resize: none;
+  margin-bottom: 1rem;
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.select-box {
+  margin-bottom: 1rem;
+}
+
+.response-textarea {
+  width: 300px;
+  height: 200px;
+  resize: none;
+}
