@@ -62,7 +62,10 @@ const FileUpload: React.FC = () => {
 
   return (
     < >
-    
+    <div className="navbar1">
+
+    <NavBar/>
+    </div>
         <div className='titre'>
             <div className='first-word'>Contract Q&A:</div> 
             <div className='complete-phrase'> 
