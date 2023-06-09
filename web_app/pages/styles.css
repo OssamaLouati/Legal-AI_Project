@@ -1,5 +1,13 @@
 
- 
+.navbar1 {
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    z-index: 100;
+  }
 
 .titre ,.first-word ,.complete-phrase {
     display:inline-block;
