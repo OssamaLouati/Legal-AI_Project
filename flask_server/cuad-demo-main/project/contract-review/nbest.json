@@ -1,0 +1,40 @@
+{
+    "0": [
+        {
+            "text": "COMMERCIAL LEASE AGREEMENT",
+            "probability": 0.8331830442231408,
+            "start_logit": 8.362202644348145,
+            "end_logit": 7.02903938293457
+        },
+        {
+            "text": "COMMERCIAL LEASE AGREEMENT THIS COMMERCIAL LEASE AGREEMENT",
+            "probability": 0.15975228358410137,
+            "start_logit": 6.710573673248291,
+            "end_logit": 7.02903938293457
+        },
+        {
+            "text": "COMMERCIAL LEASE AGREEMENT is made and entered into effective February 1, 2012, by and between FRONTAGE ROAD COMMERCIAL PROPERTIES, LLC, with mailing address of 607 Triple Tree Road, Bozeman, Montana, 59715, hereinafter referred to as \u201cLandlord,\u201d and MSU Extension, Housing & Environmental Health Program, a division of Montana State University, a state institution of higher education, hereinafter referred to as \u201cTenant.\u201d RECITALS A. Whereas, the parties entered into a Commercial Lease Agreement",
+            "probability": 0.004450559101355302,
+            "start_logit": 8.362202644348145,
+            "end_logit": 1.7968157529830933
+        },
+        {
+            "text": "COMMERCIAL LEASE AGREEMENT THIS",
+            "probability": 0.0013566386992179737,
+            "start_logit": 6.710573673248291,
+            "end_logit": 2.260425090789795
+        },
+        {
+            "text": "For the first Lease Year of 2012-2013 in the Initial Lease Term Tenant shall pay base rent in the annual sum of $134,991.96 as adjusted for 2012 by the CPI formula set forth above, payable in twelve equal monthly amounts.",
+            "probability": 0.00123680075061353,
+            "start_logit": 4.2644500732421875,
+            "end_logit": 4.6140666007995605
+        },
+        {
+            "text": "",
+            "probability": 2.0673641570994925e-05,
+            "start_logit": 2.5578908920288086,
+            "end_logit": 2.2292020320892334
+        }
+    ]
+}

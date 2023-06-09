@@ -1,95 +1,116 @@
-import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import Layout from "../components/layout";
-import AccessDenied from "../components/access-denied";
-import React from 'react';
-import { NavBar } from "../components/navbar";
-//import '../styles/demo.css';
+import { useEffect, useState } from 'react';
+import { NavBar } from '../components/navbar';
 
-const Dashboard: React.FC = () => {
-  const { data: session, status } = useSession();
-  const [fileText, setFileText] = useState('');
+const FileUpload: React.FC = () => {
+  const [selectedResponse, setSelectedResponse] = useState<string>('');
+  const [questions, setQuestions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState('');
-  const [response, setResponse] = useState('');
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const text = e.target?.result as string;
-        setFileText(text);
-      };
-      reader.readAsText(file);
+  const fetchQuestions = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/questionsshort'); // Replace with your Flask API endpoint
+      const data = await response.json();
+      console.log(data);
+      setQuestions(data);
+    } catch (error) {
+      console.log('Error fetching questions:', error);
     }
   };
-
   const handleQuestionSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedQuestion(event.target.value);
   };
-
-  const handleButtonClick = () => {
-    // Perform the necessary logic to generate the response based on the selected question and file text
-    // Set the generated response using setResponse()
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    
+    fetch('http://127.0.0.1:5000/contracts', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        const responses = data.split('\n');
+        setSelectedResponse(responses[0]);
+        const htmlContent = responses
+          .map((res, index) => `Answer ${index + 1}: ${res}`)
+          .join('');
+        document.getElementById('response')!.innerHTML = htmlContent;
+        document.getElementById('explanation')!.innerHTML = '';
+      })
+      .catch((error) => console.log(error));
   };
-  if(status === "unauthenticated") {
-    return (
-        <>{status}</>
-    )
-   }
-   
+
+  const handleExplanationClick = () => {
+    if (selectedResponse !== '') {
+      const encodedSelectedResponse = encodeURIComponent(selectedResponse);
+      const apiUrl =
+        'http://127.0.0.1:5000/contracts/paraphrase/' + encodedSelectedResponse;
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          const htmlContent = data
+            .map((element: string) => `<p>${element}</p>`)
+            .join('');
+          document.getElementById('explanation')!.innerHTML = htmlContent;
+        })
+        .catch((error) => console.log(error));
+    }
+  };
 
   return (
     <>
-   {/*  <div className="nav navbar">
-
-    <NavBar ></NavBar>
-    </div>  */}
-    <div className="container">
-       <div className="upload-section">
-            <label htmlFor="images" className="drop-container">
+    
+    <div className='dashboard'>
+      <h1>File Upload</h1>
+      <form onSubmit={handleFormSubmit} encType="multipart/form-data">
+        {/* <input type="file" name="file" /> */}
+        <label htmlFor="images" className="drop-container">
             <span className="drop-title">Drop files here</span>
             or
-            <input type="file" id="images"  required  onChange={handleFileUpload} />
+            <input type="file"   name="file"  required />
             </label>
-            <div className="controls-section">
-            
-                <select className="select-box" value={selectedQuestion} onChange={handleQuestionSelect}>
-                <option value="">Select a question</option>
-                <option value="Question 1">Question 1</option>
-                <option value="Question 2">Question 2</option>
-                <option value="Question 3">Question 3</option>
-                </select>
-                <button onClick={handleButtonClick} className="custom-btn btn-8"><span>Generate Response</span></button>
-        
-       
-            </div>
-            
-            <div className="code-container">
-                <div className="glow-container">
-                    <div className="augs" data-augmented-ui></div>
-                </div>
+        <select name="question" className="select-box" >
+          {/* <option value="What is the contract name?">
+            What is the contract name?
+          </option>
+          <option value="Who are the parties that signed the contract?">
+            Who are the parties that signed the contract?
+          </option>
+          <option value="What is the agreement date of the contract?">
+            What is the agreement date of the contract?
+          </option> */}
+          {questions && questions.map((question, index) => (
+                <option key={index} value={question}>
+                    {question}
+                </option>
+                ))}
+        </select>
+        <input  className="custom-btn btn-8" type="submit" value="Generate Response" />
+      </form>
+      {/* <div id="response"></div> */}
+      <div className="code-container">
+                
                 <section className="augs bg" data-augmented-ui>
-                    
-                    <input className="title" value="Get Response"/>
+                <input className="title" value="Get Response"/>
                     <div className="code highcontrast-dark">
-                    <textarea className="code-textarea" rows={10}  value={fileText} placeholder="Generate Response...">
+                        
+                            <textarea id="response" className="code-textarea" rows={10}   placeholder="Generate Response..." readOnly>
 
-                    </textarea>
+                            </textarea> 
                     </div>
+                    
+                    
+                    
                 </section>
-            </div>
-
         </div>
-      
-      <div>
-      </div>
+      <button onClick={handleExplanationClick}>Explain</button>
+      <div id="explanation"></div>
     </div>
     </>
-  
   );
 };
 
-export default Dashboard;
-
-
+export default FileUpload;
