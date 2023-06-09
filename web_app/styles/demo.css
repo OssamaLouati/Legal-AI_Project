@@ -555,7 +555,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	font-weight: 700;
   margin-bottom: 30px;
 }
-.contact form input, .contact form textarea {
+/* .contact form input, .contact form textarea {
   width: 100%;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -567,16 +567,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-size: 18px;
   letter-spacing: 0.8px;
   transition: 0.3s ease-in-out;
-}
-.contact form input:focus, .contact form textarea:focus {
+} */
+/* .contact form input:focus, .contact form textarea:focus {
   background: rgba(255, 255, 255, 1);
   color: #121212;
-}
-.contact form input::placeholder, .contact form textarea::placeholder {
+} */
+/* .contact form input::placeholder, .contact form textarea::placeholder {
   font-size: 16px;
   font-weight: 400;
   color: #fff;
-}
+} */
 .contact form input:focus::placeholder, .contact form textarea:focus::placeholder {
   color: #121212;
   opacity: 0.8;
@@ -697,7 +697,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .upload-section {
@@ -725,11 +724,52 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .select-box {
-  margin-bottom: 1rem;
+  width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: rebeccapurple;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
 }
+
+.select-box option {
+  color: rebeccapurple;
+}
+
+.select-box:hover {
+  box-shadow: 0 0 5px rebeccapurple;
+}
+
+.select-box:focus {
+  box-shadow: 0 0 5px rebeccapurple;
+}
+
+
 
 .response-textarea {
   width: 300px;
   height: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #171313;
+  color: #333333;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   resize: none;
+  transition: box-shadow 0.3s ease;
 }
+
+.response-textarea:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(82, 30, 102, 0.5);
+}
+
+.response-textarea::placeholder {
+  color: #999999;
+  opacity: 0.7;
+}
+
