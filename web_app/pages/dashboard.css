@@ -1,0 +1,18 @@
+.loading-bar {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background-color: #f1f1f1;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #007bff; /* Change this to customize the loading bar color */
+    transition: width 0.3s ease;
+  }
+  
