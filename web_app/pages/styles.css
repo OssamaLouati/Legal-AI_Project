@@ -1,12 +1,10 @@
 
-.navbar1 {
+.dashboard {
     
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 20px;
-    z-index: 100;
+    background-image: url('/assets/img/banner-bg.png');
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
   }
 
 .titre ,.first-word ,.complete-phrase {
