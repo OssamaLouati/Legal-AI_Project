@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { NavBar } from '../components/navbar';
 import axios from 'axios';
+import AccessDenied from '../components/access-denied';
+import { useSession } from 'next-auth/react';
 
 const FileUpload: React.FC = () => {
   const [selectedResponse, setSelectedResponse] = useState<string>('');
   const [questions, setQuestions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState('');
+  const { data: session, status } = useSession();
   useEffect(() => {
     fetchQuestions();
   }, []);
@@ -88,7 +91,12 @@ data.forEach((res: { answer: any; analyse: any }) => {
         .catch((error) => console.log(error));
     }
   };
-
+  if(status === "unauthenticated") {
+    return (
+        <>{status}
+        <AccessDenied /></>
+    )
+}
   return (
     < >
     
