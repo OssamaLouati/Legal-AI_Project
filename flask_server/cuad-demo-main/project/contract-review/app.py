@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from textblob import TextBlob
 from paraphrase import paraphrase
 from predict import run_prediction
 from io import StringIO
@@ -21,6 +22,22 @@ def load_questions_short():
     return questions_short
 
 
+def getContractAnalysis(selected_response):
+    print(selected_response)
+    
+    if selected_response == "":
+        return "No answer found in document"
+    else:
+        blob = TextBlob(selected_response)
+        polarity = blob.sentiment.polarity
+        print(polarity)
+
+        if polarity > 0:
+            return "Positive"
+        elif polarity < 0:
+            return "Negative"
+        else:
+            return "Neutral"
 
 
 
@@ -53,21 +70,27 @@ def getContractResponse():
         
         predictions = run_prediction([question], paragraph, 'marshmellow77/roberta-base-cuad',
                                          n_best_size=5)
-        answer = ""
+        answer = []
         if predictions['0'] == "":
-            answer = 'No answer found in document'
+            answer.append({
+                "answer": 'No answer found in document',
+                "probability": ""
+            })
         else:
             # if number_results == '1':
             #     answer = f"Answer: {predictions['0']}"
             #     # st.text_area(label="Answer", value=f"{answer}")
             # else:
-            answer = ""
+            
             with open("nbest.json", encoding="utf8") as jf:
                 data = json.load(jf)
                 for i in range(int(5)):
-                    answer += f" {data['0'][i]['text']}  "
-                    answer += f"Probability: {round(data['0'][i]['probability']*100,1)}%\n\n"
-        return answer
+                    answer.append({
+                        "answer": data['0'][i]['text'],
+                        "probability": f"{round(data['0'][i]['probability']*100, 1)}%",
+                        "analyse": getContractAnalysis(data['0'][i]['text'])
+                    })
+        return json.dumps(answer)
 
     else:
         return "Unable to call model, please select question and contract"

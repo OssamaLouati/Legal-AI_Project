@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavBar } from '../components/navbar';
+import axios from 'axios';
 
 const FileUpload: React.FC = () => {
   const [selectedResponse, setSelectedResponse] = useState<string>('');
@@ -25,23 +26,51 @@ const FileUpload: React.FC = () => {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    
+  
     fetch('http://127.0.0.1:5000/contracts', {
       method: 'POST',
       body: formData,
     })
-      .then((response) => response.text())
+      .then((response) => response.json()) // Parse response as JSON
       .then((data) => {
-        const responses = data.split('\n');
-        setSelectedResponse(responses[0]);
-        const htmlContent = responses
-          .map((res, index) => `Answer ${index + 1}: ${res}`)
-          .join('');
-        document.getElementById('response')!.innerHTML = htmlContent;
+        console.log(data[0].answer);
+        setSelectedResponse(data[0].answer);
+        console.log(data[0].answer);
+  
+        const textareaContent = data
+          .map(
+            (res: { answer: any; probability: any; analyse: any }, index: number) =>
+              `Answer ${index + 1}: ${res.answer} (${res.probability}) (${res.analyse})`
+          )
+          .join('\n');
+  
+        const textarea = document.getElementById('response') as HTMLTextAreaElement;
+        textarea.value = textareaContent;
+  
+        // Update answer colors based on analysis
+data.forEach((res: { answer: any; analyse: any }) => {
+    const answerIndex = data.findIndex((item: { answer: any }) => item.answer === res.answer);
+    const answerElement = document.getElementById(`answer-${answerIndex + 1}`);
+  
+    if (answerElement) {
+      if (res.analyse === 'positive') {
+        answerElement.style.color = 'green';
+      } else if (res.analyse === 'negative') {
+        answerElement.style.color = 'red';
+      } else {
+        answerElement.style.color = 'inherit';
+      }
+    }
+  });
+  
+  
         document.getElementById('explanation')!.innerHTML = '';
       })
       .catch((error) => console.log(error));
   };
+  
+  
+  
 
   const handleExplanationClick = () => {
     if (selectedResponse !== '') {
@@ -62,10 +91,7 @@ const FileUpload: React.FC = () => {
 
   return (
     < >
-    <div className="navbar1">
-
-    <NavBar/>
-    </div>
+    
         <div className='titre'>
             <div className='first-word'>Contract Q&A:</div> 
             <div className='complete-phrase'> 
@@ -118,6 +144,7 @@ const FileUpload: React.FC = () => {
       <button className="custom-btn btn-9" onClick={handleExplanationClick}><span>Explain response</span></button>
       
       <div className="ccode highcontrast-dark" id="explanation"></div>
+      <div className="ccode highcontrast-dark" id="analysis"></div>
     </div>
     </>
   );
