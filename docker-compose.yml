@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./web_app  # Path to the Next.js frontend code
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'  # Map the container port to the host port
+
+  backend:
+    build:
+      context: ./flask_server/cuad-demo-main/project/contract-review  # Path to the Flask backend code
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'  # Map the container port to the host port
+    depends_on:
+      - frontend  # Ensure that the frontend service is running before starting the backend service
