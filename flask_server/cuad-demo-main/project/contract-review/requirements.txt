@@ -3,3 +3,6 @@ torch
 streamlit
 transformers
 PyPDF4
+flask
+textblob
+
