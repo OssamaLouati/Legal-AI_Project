@@ -12,6 +12,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the source code
 COPY . .
+ENV PATH="/root/.local/bin:${PATH}"
+EXPOSE 5000
+
 
 # Set the command to start the Flask app
 CMD ["flask", "run"]
