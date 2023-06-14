@@ -9,15 +9,18 @@
 ## Overview
 The Automated Legal Document Analysis Platform is a powerful web application that automates the laborious process of analyzing legal documents. By leveraging cutting-edge technologies such as Next.js, NLP, and machine learning models, our platform extracts relevant information and identifies potential risks from legal documents. It empowers users to understand complex contract clauses, avoid potential losses, and make informed decisions when signing contracts.
 
+<img src="https://github.com/OssamaLouati/Legal-AI_Project/assets/92301300/7437f373-bb88-4925-ba5a-8f76145fba0c" width="1000px" />
+
+
 ## Key Features
-- **Automated Document Analysis**: Our platform streamlines the manual process of analyzing legal documents, saving time and effort.
-- **Reading Comprehension Model**: We have developed and evaluated a reading comprehension model based on the SQuAD dataset, allowing users to extract information directly from the documents.
-- **CUAD Dataset**: To address critical clauses commonly asked by people and lawyers, we created a CUAD dataset consisting of 500 contracts in the form of question responses.
-- **Paraphrasing Model**: We integrate a paraphrasing model based on the T5-base model. This model utilizes datasets from Quora, SQuAD 2.0, and the CNN news dataset, enabling users to better understand contract clauses.
-- **Sentiment Analysis**: Our platform includes a sentiment analysis model powered by TextBlob, which provides insights into the impact and implications of contract clauses.
-- **User-Friendly Interface**: We have developed a user-friendly interface using Next.js, ensuring a seamless and intuitive user experience.
-- **Flask Server Integration**: The web interface connects seamlessly to the machine learning side through a Flask server, enabling efficient data processing and analysis.
-- **Docker Containerization**: To simplify deployment, we have containerized our application using Docker. Users can run the application effortlessly by executing Docker Compose.
+- 📃 **Automated Document Analysis**: Our platform streamlines the manual process of analyzing legal documents, saving time and effort.
+- 📖 **Reading Comprehension Model**: We have developed and evaluated a reading comprehension model based on the SQuAD dataset, allowing users to extract information directly from the documents.
+- 📑 **CUAD Dataset**: To address critical clauses commonly asked by people and lawyers, we created a CUAD dataset consisting of 500 contracts in the form of question responses.
+- ✍️ **Paraphrasing Model**: We integrate a paraphrasing model based on the T5-base model. This model utilizes datasets from Quora, SQuAD 2.0, and the CNN news dataset, enabling users to better understand contract clauses.
+- ⭕ **Sentiment Analysis**: Our platform includes a sentiment analysis model powered by TextBlob, which provides insights into the impact and implications of contract clauses.
+- 💻 **User-Friendly Interface**: We have developed a user-friendly interface using Next.js, ensuring a seamless and intuitive user experience.
+- 🔗 **Flask Server Integration**: The web interface connects seamlessly to the machine learning side through a Flask server, enabling efficient data processing and analysis.
+- 📟 **Docker Containerization**: To simplify deployment, we have containerized our application using Docker. Users can run the application effortlessly by executing Docker Compose.
 
 ## Getting Started
 To get started with the Automated Legal Document Analysis Platform, follow these steps:
