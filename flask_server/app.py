@@ -125,55 +125,8 @@ def get_response():
 
 
 
-""" @app.route('/upload', methods=['POST'])
-def upload():
-    file = request.files['file']
-    file_content = file.read().decode('utf-8')
-    return file_content """
 
-@app.route('/proces', methods=['POST'])
-def process():
-    print("Inside the process route")
-    file = request.files["file"]
-    
-    
-    # Process the text file
-    stringio = StringIO(file.getvalue().decode("utf-8"))
 
-    # To read file as string:
-    paragraph = stringio.read()
-    
-   
-    questions = questions_short
-  
-    
-    # Perform your question processing and generate the responses
-    responses = []
-    if (not len(paragraph)==0):
-        print('getting predictions')
-        
-        for question in questions:
-            predictions = run_prediction([question], paragraph, 'marshmellow77/roberta-base-cuad', n_best_size=1)
-            answer = ""
-            if predictions['0'] == "":
-                answer = 'No answer found in document'
-            else:
-                with open("nbest.json", encoding="utf8") as jf:
-                    data = json.load(jf)
-                    for i in range(int(1)):
-                        """  answer += f"Question: {question}\n" """
-                        answer += f" {data['0'][i]['text']}\n"
-                        answer += f"Probability: {round(data['0'][i]['probability']*100, 1)}%\n\n"
-            responses.append({"question": question, "answer": answer})
-
-        # Save the responses to a JSON file
-        with open('responses.json', 'w') as file:
-            json.dump(responses, file)
-       
-        return "saved responses"
-    else:
-        print('no text')
-        return "something went wrong"
 
     
 
