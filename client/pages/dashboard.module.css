@@ -1,0 +1,358 @@
+.page {
+  min-height: 100vh;
+  background: radial-gradient(1200px 800px at 30% 10%, rgba(79, 70, 229, 0.18), transparent 55%),
+    radial-gradient(1000px 700px at 70% 30%, rgba(34, 197, 94, 0.10), transparent 60%),
+    #0b0f19;
+  color: #e5e7eb;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: rgba(11, 15, 25, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.headerInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brandTitle {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.brandSubtitle {
+  font-size: 15px;
+  margin-top: 10px;
+  color: rgba(229, 231, 235, 0.7);
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(17, 24, 39, 0.7);
+}
+
+.pillOk {
+  border-color: rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.pillWarn {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 22px 20px 28px;
+}
+
+.hero {
+  margin-bottom: 16px;
+}
+
+.heroTitle {
+  font-size: 32px;
+  font-weight: 750;
+  letter-spacing: -0.4px;
+  margin: 0;
+}
+
+.heroSubtitle {
+  margin-top: 8px;
+  font-size: 16px;
+  color: rgba(229, 231, 235, 0.75);
+  line-height: 1.5;
+  max-width: 70ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 320px 1fr 360px;
+  gap: 14px;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: rgba(17, 24, 39, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: rgba(229, 231, 235, 0.85);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.muted {
+  color: rgba(229, 231, 235, 0.65);
+  font-size: 13px;
+}
+
+.drop {
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.fileInput {
+  width: 100%;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chip {
+  cursor: pointer;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.12);
+  border: 1px solid rgba(79, 70, 229, 0.25);
+  color: rgba(229, 231, 235, 0.9);
+}
+
+.chip:hover {
+  background: rgba(79, 70, 229, 0.18);
+}
+
+.steps {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(229, 231, 235, 0.85);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(229, 231, 235, 0.18);
+}
+
+.dotActive {
+  background: rgba(79, 70, 229, 0.9);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+}
+
+.dotDone {
+  background: rgba(34, 197, 94, 0.9);
+}
+
+.chat {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 520px;
+}
+
+.messages {
+  display: grid;
+  gap: 10px;
+  padding-right: 4px;
+  overflow: auto;
+  max-height: 520px;
+}
+
+.msg {
+  border-radius: 14px;
+  padding: 12px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 15, 25, 0.55);
+}
+
+.msgUser {
+  background: rgba(79, 70, 229, 0.10);
+  border-color: rgba(79, 70, 229, 0.22);
+}
+
+.msgRole {
+  font-size: 11px;
+  color: rgba(229, 231, 235, 0.65);
+  margin-bottom: 6px;
+}
+
+.msgText {
+  white-space: pre-wrap;
+  line-height: 1.5;
+  font-size: 14px;
+  color: rgba(229, 231, 235, 0.92);
+}
+
+.composer {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.input {
+  flex: 1;
+  background: rgba(11, 15, 25, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: rgba(229, 231, 235, 0.95);
+  outline: none;
+  font-size: 14px;
+}
+
+.button {
+  background: rgba(79, 70, 229, 0.9);
+  border: 1px solid rgba(79, 70, 229, 0.9);
+  color: white;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.sources {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.sourceChip {
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  cursor: pointer;
+}
+
+.sourceChipActive {
+  border-color: rgba(34, 197, 94, 0.45);
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.panelTabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tab {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(11, 15, 25, 0.45);
+  cursor: pointer;
+}
+
+.tabActive {
+  border-color: rgba(79, 70, 229, 0.35);
+  background: rgba(79, 70, 229, 0.12);
+}
+
+.kv {
+  display: grid;
+  gap: 8px;
+}
+
+.kvRow {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(229, 231, 235, 0.88);
+}
+
+.k {
+  color: rgba(229, 231, 235, 0.6);
+}
+
+.clauseList {
+  display: grid;
+  gap: 8px;
+  max-height: 520px;
+  overflow: auto;
+}
+
+.clause {
+  border-radius: 12px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 15, 25, 0.45);
+  cursor: pointer;
+}
+
+.clauseActive {
+  border-color: rgba(79, 70, 229, 0.35);
+  background: rgba(79, 70, 229, 0.10);
+}
+
+.clauseTitle {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.clauseSnippet {
+  font-size: 13px;
+  color: rgba(229, 231, 235, 0.75);
+  white-space: pre-wrap;
+  line-height: 1.45;
+}
