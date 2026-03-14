@@ -20,8 +20,12 @@ from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 def _get_model():
     device = "cpu"
     tokenizer = AutoTokenizer.from_pretrained("humarin/chatgpt_paraphraser_on_T5_base")
-    model = AutoModelForSeq2SeqLM.from_pretrained("humarin/chatgpt_paraphraser_on_T5_base").to(device)
+    model = AutoModelForSeq2SeqLM.from_pretrained(
+        "humarin/chatgpt_paraphraser_on_T5_base"
+    ).to(device)
     return tokenizer, model
+
+
 
 def paraphrase(
     question,
@@ -32,7 +36,7 @@ def paraphrase(
     diversity_penalty=3.0,
     no_repeat_ngram_size=2,
     temperature=0.7,
-    max_length=128
+    max_length=128,
 ):
     tokenizer, model = _get_model()
     input_ids = tokenizer(

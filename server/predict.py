@@ -1,17 +1,16 @@
-import torch
 import time
-from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from multiprocessing import cpu_count
 
+import torch
+from torch.utils.data import DataLoader, SequentialSampler
 from transformers import (
     AutoConfig,
     AutoModelForQuestionAnswering,
     AutoTokenizer,
-    squad_convert_examples_to_features
+    squad_convert_examples_to_features,
 )
-
-from transformers.data.processors.squad import SquadResult, SquadV2Processor, SquadExample
 from transformers.data.metrics.squad_metrics import compute_predictions_logits
+from transformers.data.processors.squad import SquadExample, SquadResult, SquadV2Processor
 
 
 def run_prediction(question_texts, context_text, model_path, n_best_size):
@@ -26,7 +25,11 @@ def run_prediction(question_texts, context_text, model_path, n_best_size):
     def to_list(tensor):
         return tensor.detach().cpu().tolist()
 
-    config_class, model_class, tokenizer_class = (AutoConfig, AutoModelForQuestionAnswering, AutoTokenizer)
+    config_class, model_class, tokenizer_class = (
+        AutoConfig,
+        AutoModelForQuestionAnswering,
+        AutoTokenizer,
+    )
     config = config_class.from_pretrained(model_path)
     tokenizer = tokenizer_class.from_pretrained(model_path, do_lower_case=True, use_fast=False)
     model = model_class.from_pretrained(model_path, config=config)
@@ -34,7 +37,8 @@ def run_prediction(question_texts, context_text, model_path, n_best_size):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
 
-    processor = SquadV2Processor()
+    # Processor kept for historical reasons; examples are built manually below.
+    SquadV2Processor()
     examples = []
 
     timer = time.time()

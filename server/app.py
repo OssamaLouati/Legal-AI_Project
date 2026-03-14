@@ -1,10 +1,12 @@
-from flask import Flask, request, jsonify
+import json
+from io import StringIO
+
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 from textblob import TextBlob
+
 from paraphrase import paraphrase
 from predict import run_prediction
-from io import StringIO
-import json
-from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
@@ -61,7 +63,6 @@ def getContractResponse():
 
     # Process the text file
     stringio = StringIO(file.getvalue().decode("utf-8"))
-    response = []
     answer = ""
     # To read file as string:
     paragraph = stringio.read()
