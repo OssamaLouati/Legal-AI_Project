@@ -1,5 +1,5 @@
 # Specify the base image
-FROM node:16-alpine
+FROM node:20-alpine
 
 
 # Set the working directory
@@ -14,8 +14,6 @@ RUN npm install
 # Copy the source code
 COPY . .
 
-# Build the Next.js app
-RUN npm run build
-
-ENV NODE_ENV=production
-CMD ["npm", "run", "start", "--", "-p", "3000"]
+# Default to dev server for local docker-compose use.
+# (Production mode is faster but requires env vars to be passed in explicitly.)
+CMD ["npm", "run", "dev", "--", "--port", "3000"]

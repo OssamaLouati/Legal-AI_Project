@@ -14,10 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 ENV PATH="/root/.local/bin:${PATH}"
 
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
 EXPOSE 5000
 
-
-# Set the command to start the Flask app
-CMD ["flask", "run"]
+# Run behind a production WSGI server
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app", "--workers", "2", "--threads", "4", "--timeout", "120"]

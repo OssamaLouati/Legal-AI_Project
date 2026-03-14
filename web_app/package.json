@@ -11,20 +11,15 @@
     "build": "next build",
     "start": "next start"
   },
-  "author": "Iain Collins <me@iaincollins.com>",
-  "contributors": [
-    "Balázs Orbán <info@balazsorban.com>",
-    "Nico Domino <yo@ndo.dev>",
-    "Lluis Agusti <hi@llu.lu>"
-  ],
+  "author": "Oussama Louati <oussamalouatioussama@gmail.com>",
   "dependencies": {
     "animate.css": "^4.1.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "jquery": "^3.7.0",
     "next": "latest",
-    "next-auth": "latest",
-    "nodemailer": "^6",
+    "next-auth": "^4.24.13",
+    "nodemailer": "^7.0.7",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-bootstrap-icons": "^1.10.3",
@@ -32,17 +27,15 @@
     "react-mailchimp-subscribe": "^2.1.3",
     "react-multi-carousel": "^2.8.3",
     "react-on-screen": "^2.1.1",
-    "react-router-dom": "^6.12.1",
-    "react-router-hash-link": "^2.4.3",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.16",
-    "@types/node": "^17",
+    "@types/node": "^20",
     "@types/react": "^18.0.37",
     "@types/react-mailchimp-subscribe": "^2.1.1",
     "@types/react-slick": "^0.23.10",
-    "typescript": "^4"
+    "typescript": "^5"
   }
 }
