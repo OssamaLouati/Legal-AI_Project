@@ -1,3 +1,10 @@
+.env
+.env.local
+.env.*.local
+
+__pycache__/
+*.py[cod]
+
 # Python
 __pycache__/
 *.py[cod]

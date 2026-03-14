@@ -2,14 +2,14 @@ version: '3.8'
 services:
   frontend:
     build:
-      context: ./web_app  # Path to the Next.js frontend code
+      context: ./client  # Path to the Next.js frontend code
       dockerfile: Dockerfile
     ports:
       - '3000:3000'  # Map the container port to the host port
 
   backend:
     build:
-      context: ./flask_server  # Path to the Flask backend code
+      context: ./server  # Path to the Flask backend code
       dockerfile: Dockerfile
     ports:
       - '5001:5000'  # Map the container port to the host port
