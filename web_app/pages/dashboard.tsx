@@ -4,6 +4,8 @@ import axios from 'axios';
 import AccessDenied from '../components/access-denied';
 import { useSession } from 'next-auth/react';
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://127.0.0.1:5001';
+
 const FileUpload: React.FC = () => {
   const [selectedResponse, setSelectedResponse] = useState<string>('');
   const [questions, setQuestions] = useState([]);
@@ -15,7 +17,7 @@ const FileUpload: React.FC = () => {
 
   const fetchQuestions = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/questionsshort'); // Replace with your Flask API endpoint
+      const response = await fetch(`${BACKEND_URL}/questionsshort`);
       const data = await response.json();
       console.log(data);
       setQuestions(data);
@@ -30,7 +32,7 @@ const FileUpload: React.FC = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
   
-    fetch('http://127.0.0.1:5000/contracts', {
+    fetch(`${BACKEND_URL}/contracts`, {
       method: 'POST',
       body: formData,
     })
@@ -79,7 +81,7 @@ data.forEach((res: { answer: any; analyse: any }) => {
     if (selectedResponse !== '') {
       const encodedSelectedResponse = encodeURIComponent(selectedResponse);
       const apiUrl =
-        'http://127.0.0.1:5000/contracts/paraphrase/' + encodedSelectedResponse;
+        `${BACKEND_URL}/contracts/paraphrase/` + encodedSelectedResponse;
       fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
@@ -137,7 +139,7 @@ data.forEach((res: { answer: any; analyse: any }) => {
       <div className="code-container">
                 
                 <section className="augs bg" data-augmented-ui>
-                <input className="title" value="Get Response"/>
+                <input className="title" defaultValue="Get Response" readOnly />
                     <div className="code highcontrast-dark">
                         
                             <textarea id="response" className="code-textarea" rows={10}   placeholder="Generate Response..." readOnly>

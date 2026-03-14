@@ -13,6 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the source code
 COPY . .
 ENV PATH="/root/.local/bin:${PATH}"
+
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
 EXPOSE 5000
 
 

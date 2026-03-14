@@ -1,28 +1,27 @@
-# This Python 3 environment comes with many helpful analytics libraries installed
-# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
-# For example, here's several helpful packages to load
+"""Paraphrasing helper.
 
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+Original file contained Kaggle notebook scaffolding and eagerly downloaded/loaded
+the T5 model at import-time.
 
-# Input data files are available in the read-only "../input/" directory
-# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
+In a web server this is problematic because importing the module blocks startup
+(large model download) or can crash on restricted environments.
 
-import os
-for dirname, _, filenames in os.walk('/kaggle/input'):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
+We lazy-load the model on first use.
+"""
 
-# You can write up to 20GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save & Run All" 
-# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
+from __future__ import annotations
 
-device = "cpu"
+from functools import lru_cache
 
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
-tokenizer = AutoTokenizer.from_pretrained("humarin/chatgpt_paraphraser_on_T5_base")
 
-model = AutoModelForSeq2SeqLM.from_pretrained("humarin/chatgpt_paraphraser_on_T5_base").to(device)
+@lru_cache(maxsize=1)
+def _get_model():
+    device = "cpu"
+    tokenizer = AutoTokenizer.from_pretrained("humarin/chatgpt_paraphraser_on_T5_base")
+    model = AutoModelForSeq2SeqLM.from_pretrained("humarin/chatgpt_paraphraser_on_T5_base").to(device)
+    return tokenizer, model
 
 def paraphrase(
     question,
@@ -35,6 +34,7 @@ def paraphrase(
     temperature=0.7,
     max_length=128
 ):
+    tokenizer, model = _get_model()
     input_ids = tokenizer(
         f'paraphrase: {question}',
         return_tensors="pt", padding="longest",

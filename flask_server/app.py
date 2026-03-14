@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, request, jsonify
 from textblob import TextBlob
 from paraphrase import paraphrase
 from predict import run_prediction
@@ -47,7 +47,8 @@ questions_short = load_questions_short()
 
 @app.route('/questionsshort')
 def getQuestionsShort():
-    return questions_short
+    # Ensure proper JSON response
+    return jsonify(questions_short)
 
 
 
@@ -90,7 +91,7 @@ def getContractResponse():
                         "probability": f"{round(data['0'][i]['probability']*100, 1)}%",
                         "analyse": getContractAnalysis(data['0'][i]['text'])
                     })
-        return json.dumps(answer)
+        return jsonify(answer)
 
     else:
         return "Unable to call model, please select question and contract"
@@ -110,29 +111,19 @@ def getContractParaphrase(selected_response):
         print('getting paraphrases')
         paraphrases = paraphrase(selected_response)
         print(paraphrases)
-        return paraphrases
+        return jsonify(paraphrases)
 
 @app.route('/get_response', methods=['POST'])
 def get_response():
     question = request.form['selected_response']
     with open('responses.json', 'r') as file:
-        responses = json.load('responses.json')
+        # json.load expects a file object, not a path string
+        responses = json.load(file)
         for response in responses:
             if response['question'] == question:
                 return response['answer']
     
     return "Response not found"
-
-
-
-
-
-
-    
-
-
-
-
 
 if __name__ == '__main__':
     app.run()

@@ -17,5 +17,5 @@ COPY . .
 # Build the Next.js app
 RUN npm run build
 
-# Set the command to start the Next.js app
-CMD ["npm", "run","dev"]
+ENV NODE_ENV=production
+CMD ["npm", "run", "start", "--", "-p", "3000"]

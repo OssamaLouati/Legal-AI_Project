@@ -4,5 +4,6 @@ streamlit
 transformers
 PyPDF4
 flask
+flask-cors
 textblob
 
