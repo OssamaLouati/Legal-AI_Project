@@ -9,9 +9,9 @@ services:
 
   backend:
     build:
-      context: ./server  # Path to the Flask backend code
+      context: ./server_v2  # Path to the FastAPI backend code
       dockerfile: Dockerfile
     ports:
-      - '5001:5000'  # Map the container port to the host port
+      - '5001:8000'  # Map the container port to the host port
     depends_on:
       - frontend  # Ensure that the frontend service is running before starting the backend service

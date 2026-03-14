@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { NavBar } from '../components/navbar';
-import axios from 'axios';
 import AccessDenied from '../components/access-denied';
 import { useSession } from 'next-auth/react';
 
@@ -8,6 +6,8 @@ const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? 'http://127.0.0.1:500
 
 const FileUpload: React.FC = () => {
   const [selectedResponse, setSelectedResponse] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [questions, setQuestions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState('');
   const { data: session, status } = useSession();
@@ -17,10 +17,17 @@ const FileUpload: React.FC = () => {
 
   const fetchQuestions = async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/questionsshort`);
-      const data = await response.json();
-      console.log(data);
-      setQuestions(data);
+      // Legacy endpoint removed in server_v2. Keep UI functional with a minimal default.
+      const defaults = [
+        "What is the contract name?",
+        "Who are the parties that signed the contract?",
+        "What is the agreement date of the contract?",
+      ];
+      setQuestions(defaults as any);
+      // Ensure the select has a default value
+      if (!selectedQuestion) {
+        setSelectedQuestion(defaults[0]);
+      }
     } catch (error) {
       console.log('Error fetching questions:', error);
     }
@@ -30,68 +37,64 @@ const FileUpload: React.FC = () => {
   };
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+    setIsLoading(true);
+    setSelectedResponse('');
+
     const formData = new FormData(e.currentTarget);
+    const file = formData.get('file') as File | null;
+    console.log('[dashboard] submitting', {
+      backend: BACKEND_URL,
+      question: formData.get('question'),
+      fileName: file?.name,
+      fileSize: file?.size,
+      fileType: file?.type,
+    });
+    // Ensure a question is always sent (backend requires it)
+    if (!formData.get('question')) {
+      const fallbackQuestion = questions?.[0] ?? 'What is the agreement date of the contract?';
+      formData.set('question', fallbackQuestion as any);
+    }
   
-    fetch(`${BACKEND_URL}/contracts`, {
+    fetch(`${BACKEND_URL}/v2/contracts/answer`, {
       method: 'POST',
       body: formData,
     })
-      .then((response) => response.json()) // Parse response as JSON
+      .then(async (response) => {
+        if (!response.ok) {
+          const text = await response.text();
+          throw new Error(text || `Request failed with ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
-        console.log(data[0].answer);
-        setSelectedResponse(data[0].answer);
-        console.log(data[0].answer);
-  
-        const textareaContent = data
-          .map(
-            (res: { answer: any; probability: any; analyse: any }, index: number) =>
-              `Answer ${index + 1}: ${res.answer} (${res.probability}) (${res.analyse})`
-          )
-          .join('\n');
-  
+        console.log('[dashboard] backend response', data);
+        const answerText = typeof data?.answer === 'string' ? data.answer : JSON.stringify(data, null, 2);
+        setSelectedResponse(answerText);
+
         const textarea = document.getElementById('response') as HTMLTextAreaElement;
-        textarea.value = textareaContent;
+        textarea.value = answerText ? `Answer: ${answerText}` : 'No answer returned.';
   
         // Update answer colors based on analysis
-data.forEach((res: { answer: any; analyse: any }) => {
-    const answerIndex = data.findIndex((item: { answer: any }) => item.answer === res.answer);
-    const answerElement = document.getElementById(`answer-${answerIndex + 1}`);
-  
-    if (answerElement) {
-      if (res.analyse === 'positive') {
-        answerElement.style.color = 'green';
-      } else if (res.analyse === 'negative') {
-        answerElement.style.color = 'red';
-      } else {
-        answerElement.style.color = 'inherit';
-      }
-    }
-  });
+        // Analysis coloring removed in server_v2 response.
   
   
         document.getElementById('explanation')!.innerHTML = '';
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setError(error?.message ?? 'Something went wrong');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
   
   
   
 
   const handleExplanationClick = () => {
-    if (selectedResponse !== '') {
-      const encodedSelectedResponse = encodeURIComponent(selectedResponse);
-      const apiUrl =
-        `${BACKEND_URL}/contracts/paraphrase/` + encodedSelectedResponse;
-      fetch(apiUrl)
-        .then((response) => response.json())
-        .then((data) => {
-          const htmlContent = data
-            .map((element: string) => `<p>${element}</p>`)
-            .join('');
-          document.getElementById('explanation')!.innerHTML = htmlContent;
-        })
-        .catch((error) => console.log(error));
-    }
+    // Paraphrase endpoint not yet implemented in server_v2.
   };
   if(status === "unauthenticated") {
     return (
@@ -117,7 +120,12 @@ data.forEach((res: { answer: any; analyse: any }) => {
             or
             <input type="file" className='file-upload'   name="file"  required />
             </label>
-        <select name="question" className="select-box" >
+        <select
+          name="question"
+          className="select-box"
+          value={selectedQuestion}
+          onChange={handleQuestionSelect}
+        >
           {/* <option value="What is the contract name?">
             What is the contract name?
           </option>
@@ -128,13 +136,30 @@ data.forEach((res: { answer: any; analyse: any }) => {
             What is the agreement date of the contract?
           </option> */}
           {questions && questions.map((question, index) => (
-                <option key={index} value={question}>
-                    {question}
-                </option>
-                ))}
+            <option key={index} value={question}>
+              {question}
+            </option>
+          ))}
         </select>
-        <input  className="custom-btn btn-8" type="submit" value="Generate Response" />
+        <input
+          className="custom-btn btn-8"
+          type="submit"
+          value={isLoading ? "Analyzing…" : "Generate Response"}
+          disabled={isLoading}
+        />
       </form>
+
+      {isLoading && (
+        <div style={{ marginTop: 12, color: '#fff' }}>
+          Server is thinking… Digesting the document and generating an answer.
+        </div>
+      )}
+
+      {error && (
+        <div style={{ marginTop: 12, color: '#ff6b6b', whiteSpace: 'pre-wrap' }}>
+          {error}
+        </div>
+      )}
       {/* <div id="response"></div> */}
       <div className="code-container">
                 
