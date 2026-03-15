@@ -80,7 +80,7 @@
 }
 
 .heroTitle {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 750;
   letter-spacing: -0.4px;
   margin: 0;
@@ -88,7 +88,7 @@
 
 .heroSubtitle {
   margin-top: 8px;
-  font-size: 16px;
+  font-size: 17px;
   color: rgba(229, 231, 235, 0.75);
   line-height: 1.5;
   max-width: 70ch;
@@ -115,7 +115,7 @@
 }
 
 .cardTitle {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.2px;
   color: rgba(229, 231, 235, 0.85);
@@ -128,7 +128,7 @@
 
 .muted {
   color: rgba(229, 231, 235, 0.65);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .drop {
@@ -152,7 +152,7 @@
 
 .chip {
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(79, 70, 229, 0.12);
@@ -174,7 +174,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(229, 231, 235, 0.85);
 }
 
@@ -229,7 +229,7 @@
 .msgText {
   white-space: pre-wrap;
   line-height: 1.5;
-  font-size: 14px;
+  font-size: 15px;
   color: rgba(229, 231, 235, 0.92);
 }
 
@@ -247,7 +247,7 @@
   padding: 10px 12px;
   color: rgba(229, 231, 235, 0.95);
   outline: none;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .button {
@@ -258,7 +258,7 @@
   padding: 10px 12px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .button:disabled {
@@ -274,7 +274,7 @@
 }
 
 .sourceChip {
-  font-size: 11px;
+  font-size: 12px;
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
@@ -294,7 +294,7 @@
 }
 
 .tab {
-  font-size: 12px;
+  font-size: 13px;
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.10);
@@ -316,7 +316,7 @@
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 8px;
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(229, 231, 235, 0.88);
 }
 
@@ -345,13 +345,13 @@
 }
 
 .clauseTitle {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   margin-bottom: 6px;
 }
 
 .clauseSnippet {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(229, 231, 235, 0.75);
   white-space: pre-wrap;
   line-height: 1.45;

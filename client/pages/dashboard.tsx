@@ -131,7 +131,8 @@ const FileUpload: React.FC = () => {
         <>{status}
         <AccessDenied /></>
     )
-}
+  }
+  
   return (
     <div className={styles.page}>
       <div className={styles.header}>
